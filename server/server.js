@@ -10,7 +10,7 @@ const app = express();
 app.use(bodyParser.json());
 
 // DB Config
-const db = require('./config/keys').mongoDBURI;
+const db = require('../config/keys').mongoDBURI;
 
 // DB Connect
 mongoose.connect(db)
