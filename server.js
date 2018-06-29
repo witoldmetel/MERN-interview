@@ -1,14 +1,18 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 
 const app = express();
 
+// Bodyparser
+app.use(bodyParser.json());
+
 // DB Config
-const db = require('./config/keys').mongodb;
+const db = require('./config/keys').mongoDBURI;
 
 // DB Connect
 mongoose.connect(db)
-    .then(() => console.log("DB Connect"))
+    .then(() => console.log("MongoDB Connect"))
     .catch(err => console.log(err));
 
 // Port Server
