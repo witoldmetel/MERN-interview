@@ -1,0 +1,9 @@
+.todoItem {
+    display: flex;
+    align-items: center;
+}
+
+.todoItem__controls {
+    display: flex;
+    justify-content: flex-end;
+}
