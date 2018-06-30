@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
+import uuid from 'uuid';
 import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap';
 
 export default class TodoList extends Component {
     state = {
         todos: [
-            { id: 1, title: 'Buy books' },
-            { id: 2, title: 'Buy cars' },
-            { id: 3, title: 'Buy milk' },
-            { id: 4, title: 'Buy apples' }
+            { id: uuid(), title: 'Buy books' },
+            { id: uuid(), title: 'Buy cars' },
+            { id: uuid(), title: 'Buy milk' },
+            { id: uuid(), title: 'Buy apples' }
         ]
     }
 
@@ -15,7 +16,7 @@ export default class TodoList extends Component {
         const title = prompt('Add new todo');
         if (title) {
             this.setState(state => ({
-                todos: [...state.todos, { id: 5, title }]
+                todos: [...state.todos, { id: uuid(), title }]
             }));
         }
     }
