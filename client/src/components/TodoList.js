@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import uuid from 'uuid';
 import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { getTodos } from '../actions/index';
 
-export default class TodoList extends Component {
-    state = {
-        todos: [
-            { id: uuid(), title: 'Buy books' },
-            { id: uuid(), title: 'Buy cars' },
-            { id: uuid(), title: 'Buy milk' },
-            { id: uuid(), title: 'Buy apples' }
-        ]
+class TodoList extends Component {
+    componentDidMount() {
+        this.props.getTodos();
     }
 
     AddTodo = () => {
@@ -21,8 +19,15 @@ export default class TodoList extends Component {
         }
     }
 
+    RemoveTodo = () => {
+        const { id } = this.state.todos;
+        this.setState(state => ({
+                todos: state.todos.filter(todo => todo.id !== id)
+            }));
+    }
+
     render() {
-        const { todos } = this.state;
+        const { todos } = this.props.todo;
         return (
         <div>
             <Container>
@@ -35,6 +40,13 @@ export default class TodoList extends Component {
                     {todos.map(({ id, title }) => (
                         <ListGroupItem key={id}>
                             {title}
+                            <Button
+                                color="danger"
+                                className="ml-5"
+                                onClick={this.RemoveTodo}
+                            >
+                                X
+                            </Button>
                         </ListGroupItem>
                     ))}
                 </ListGroup>
@@ -43,3 +55,14 @@ export default class TodoList extends Component {
         )
     }
 }
+
+TodoList.propTypes = {
+    todo: PropTypes.object.isRequired,
+    getTodos: PropTypes.func.isRequired
+}
+
+const mapStateToProps = (state) => ({
+    todo: state.todo
+})
+
+export default connect(mapStateToProps, { getTodos })(TodoList)
