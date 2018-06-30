@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { Container, ListGroup, ListGroupItem, Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Container, ListGroup, ListGroupItem, Button, Form, FormGroup, Label, Input, Collapse } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getTodos, addTodo, deleteTodo, toggleTodo } from '../actions/index';
 import './TodoList.css';
+import InputTodo from './InputTodo';
+import TodoTask from './TodoTask';
 
 class TodoList extends Component {
     componentDidMount() {
@@ -25,53 +27,25 @@ class TodoList extends Component {
         this.props.addTodo(newTask)
     }
 
-    onDeleteClick = (id) => {
-        this.props.deleteTodo(id);
-    }
-
-    onToggleClick = (id) => {
-        this.props.toggleTodo(id);
-    }
-
     render() {
         const { todos } = this.props.todo;
         return (
         <div>
             <Container>
-                <Form onSubmit={this.onSubmit}>
-                    <FormGroup>
-                        <Label for="todo">Todo</Label>
-                        <Input
-                            type="text"
-                            name="title"
-                            id="todo"
-                            placeholder="Add todo task"
-                            onChange={this.onChange}
-                        />
-                    </FormGroup>
-                    <Button
-                        color="primary"
-                    >
-                        Add Todo
-                    </Button>
-                </Form>
+                <InputTodo
+                    AddTask={this.onSubmit}
+                    ChangeValue={this.onChange}
+                >
+                </InputTodo>
                 <ListGroup>
                     {todos.map(({ id, title, completed }) => (
-                        <ListGroupItem key={id} className="todoItem">
-                            <p style={{ textDecoration: completed ? 'line-through' : 'none' }}>{title}</p>
-                            <div className="todoItem__controls">
-                                <label className="container">
-                                    <input type="checkbox" onClick={this.onToggleClick.bind(this, id)}/>
-                                    <span className="checkmark"></span>
-                                </label>
-                                <Button
-                                    color="danger"
-                                    onClick={this.onDeleteClick.bind(this, id)}
-                                >
-                                    X
-                                </Button>
-                            </div>
-                        </ListGroupItem>
+                        <TodoTask
+                            key={id}
+                            id={id}
+                            title={title}
+                            completed={completed}
+                        >
+                        </TodoTask>
                     ))}
                 </ListGroup>
             </Container>
@@ -83,9 +57,7 @@ class TodoList extends Component {
 TodoList.propTypes = {
     todo: PropTypes.object.isRequired,
     getTodos: PropTypes.func.isRequired,
-    addTodo: PropTypes.func.isRequired,
-    deleteTodo: PropTypes.func.isRequired,
-    toggleTodo: PropTypes.func.isRequired
+    addTodo: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state) => ({
