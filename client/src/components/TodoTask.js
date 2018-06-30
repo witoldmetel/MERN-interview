@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { ListGroup, ListGroupItem, Button, Collapse } from 'reactstrap';
+import { ListGroupItem, Button, Collapse } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { deleteTodo, toggleTodo } from '../actions/index';
-
 
 class TodoTask extends Component {
     state = {
@@ -31,12 +30,8 @@ class TodoTask extends Component {
             <ListGroupItem key={id} className="todoItem">
                 <p style={{ textDecoration: completed ? 'line-through' : 'none' }}>{title}</p>
                 <div className="todoItem__controls">
-                    <label className="container">
+                    <label>
                         <input type="checkbox" onClick={this.onToggleClick.bind(this, id)}/>
-                        <span className="checkmark"></span>
-                    </label>
-                    <label class="btn-subtask">
-                        <input type="text" placeholder="add subtask"/>
                     </label>
                     <Button
                         color="danger"
@@ -51,10 +46,10 @@ class TodoTask extends Component {
                         Open
                     </Button>
                 </div>
-                <Collapse isOpen={this.state.collapse}>
-                    <ListGroup>Test</ListGroup>
-                </Collapse>
             </ListGroupItem>
+            <Collapse isOpen={this.state.collapse}>
+                Test
+            </Collapse>
         </div>
     )
     }

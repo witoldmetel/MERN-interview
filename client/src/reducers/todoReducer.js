@@ -8,7 +8,7 @@ const initialState = {
             { id: uuid(), title: 'Buy milk', completed: false },
             { id: uuid(), title: 'Buy apple', completed: false }
         ]
-}
+    }
 
 export default function(state = initialState, action) {
     switch(action.type) {

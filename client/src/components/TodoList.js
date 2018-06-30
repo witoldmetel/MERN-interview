@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Container, ListGroup, ListGroupItem, Button, Form, FormGroup, Label, Input, Collapse } from 'reactstrap';
+import { Container, ListGroup } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getTodos, addTodo, deleteTodo, toggleTodo } from '../actions/index';
+import { getTodos, addTodo } from '../actions/index';
 import './TodoList.css';
 import InputTodo from './InputTodo';
 import TodoTask from './TodoTask';
@@ -28,26 +28,35 @@ class TodoList extends Component {
     }
 
     render() {
+        let todoListContent;
         const { todos } = this.props.todo;
-        return (
-        <div>
-            <Container>
-                <InputTodo
-                    AddTask={this.onSubmit}
-                    ChangeValue={this.onChange}
-                >
-                </InputTodo>
+        if(todos) {
+            todoListContent = (
                 <ListGroup>
-                    {todos.map(({ id, title, completed }) => (
+                    {todos.map(({ id, title, completed, subtasks }) => (
                         <TodoTask
                             key={id}
                             id={id}
                             title={title}
                             completed={completed}
+                            subtasks={subtasks}
                         >
                         </TodoTask>
                     ))}
                 </ListGroup>
+            )
+        } else {
+            todoListContent = null;
+        }
+        return (
+        <div>
+            <Container className="conteinerr">
+                <InputTodo
+                    AddTask={this.onSubmit}
+                    ChangeValue={this.onChange}
+                >
+                </InputTodo>
+                {todoListContent}
             </Container>
         </div>
         )
@@ -64,4 +73,4 @@ const mapStateToProps = (state) => ({
     todo: state.todo
 })
 
-export default connect(mapStateToProps, { getTodos, addTodo, deleteTodo, toggleTodo })(TodoList)
+export default connect(mapStateToProps, { getTodos, addTodo })(TodoList)

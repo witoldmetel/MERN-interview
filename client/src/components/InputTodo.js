@@ -8,11 +8,9 @@ export default class InputTodo extends Component {
     <div>
         <Form onSubmit={AddTask}>
             <FormGroup>
-                <Label for="todo">Todo</Label>
                 <Input
                     type="text"
                     name="title"
-                    id="todo"
                     placeholder="Add todo task"
                     onChange={ChangeValue}
                 />

@@ -1,3 +1,14 @@
+.container {
+    width: 80%;
+    margin-top: 2rem;
+    padding: 25px;
+    border: 1px solid rgb(121, 116, 116);
+    border-radius: 10px;
+    -webkit-box-shadow: 10px 10px 37px -8px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 37px -8px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 37px -8px rgba(0, 0, 0, 0.75);
+}
+
 .todoItem {
     display: flex;
     align-items: center;
@@ -7,33 +18,4 @@
 .todoItem__controls {
     display: flex;
     justify-content: flex-end;
-}
-
-label.btn-subtask {
-    background-color: green;
-    width: 35px;
-    height: 35px;
-    cursor: pointer;
-    position: relative;
-}
-
-label.btn-subtask input {
-    position: absolute;
-    -webkit-box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.08);
-    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.08);
-    border: 1px solid #e8e8e8;
-    height: 34px;
-    margin-right: -2.25rem;
-    -webkit-transition: .25s;
-    -o-transition: .25s;
-    transition: .25s;
-    outline: 0;
-    opacity: 0; 
-    width: 0;
-    right: 60px;
-}
-
-label.btn-subtask input:focus {
-    opacity: 1;
-    width: 10rem;
 }
