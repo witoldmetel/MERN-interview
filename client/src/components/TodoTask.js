@@ -3,6 +3,7 @@ import { ListGroupItem, Button, Collapse } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { deleteTodo, toggleTodo } from '../actions/index';
+import './TodoTask.css'
 
 class TodoTask extends Component {
     state = {
@@ -30,20 +31,18 @@ class TodoTask extends Component {
             <ListGroupItem key={id} className="todoItem">
                 <p style={{ textDecoration: completed ? 'line-through' : 'none' }}>{title}</p>
                 <div className="todoItem__controls">
-                    <label>
+                    <label className="checkbox">
                         <input type="checkbox" onClick={this.onToggleClick.bind(this, id)}/>
+                        <span class="checkmark"></span>
                     </label>
-                    <Button
-                        color="danger"
-                        onClick={this.onDeleteClick.bind(this, id)}
-                    >
-                        X
+                    <Button onClick={this.onDeleteClick.bind(this, id)} color="danger">
+                        <i class="far fa-trash-alt"></i>
                     </Button>
                     <Button
                         color="primary"
                         onClick={this.onCollapse}
                     >
-                        Open
+                        {this.state.collapse ? <i class="fas fa-caret-up"></i> : <i class="fas fa-caret-down"></i>}
                     </Button>
                 </div>
             </ListGroupItem>

@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button, Form, FormGroup, Input } from 'reactstrap';
+import './InputTodo.css';
 
 export default class InputTodo extends Component {
   render() {
     const { AddTask, ChangeValue } = this.props;
     return (
     <div>
-        <Form onSubmit={AddTask}>
-            <FormGroup>
+        <Form onSubmit={AddTask} className="formContainer">
+            <FormGroup className="formContainer__form">
                 <Input
                     type="text"
                     name="title"
@@ -15,9 +16,7 @@ export default class InputTodo extends Component {
                     onChange={ChangeValue}
                 />
             </FormGroup>
-            <Button
-                color="primary"
-            >
+            <Button color="primary" className="formContainer__button" title="Add Task">
                 Add Todo
             </Button>
         </Form>
