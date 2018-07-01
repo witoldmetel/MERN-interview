@@ -66,6 +66,7 @@ class TodoTask extends Component {
                     <Button
                         color="primary"
                         onClick={this.onCollapse}
+                        hidden
                     >
                         {this.state.collapse ? <i className="fas fa-caret-up"></i> : <i className="fas fa-caret-down"></i>}
                     </Button>
