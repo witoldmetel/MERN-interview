@@ -48,4 +48,15 @@ router.put('/:id', (req, res) => {
         }
 )});
 
+//Add subtask
+// router.post('/subtasks', (req, res) => {
+//     const newSubtask = new subtask({
+//         title: req.body.title,
+//         completed: false
+//     });
+
+//     newSubtask.save()
+//         .then(subtask => res.json(subtask))
+// });
+
 module.exports = router;
