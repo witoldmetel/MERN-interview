@@ -13,9 +13,9 @@ class TodoList extends Component {
     }
 
     onChange = (e) => {
-        this.setState({
-            [e.target.name]: e.target.value
-        })
+            this.setState({
+                [e.target.name]: e.target.value
+            })
     }
 
     onSubmit = (e) => {
@@ -24,7 +24,7 @@ class TodoList extends Component {
             title: this.state.title
         }
         this.props.addTodo(newTask)
-    }
+        }
 
     render() {
         let todoListContent;
