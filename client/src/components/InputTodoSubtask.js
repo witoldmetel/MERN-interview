@@ -13,12 +13,10 @@ class InputTodoSubtask extends Component {
 
     onSubmit = (e) => {
       e.preventDefault();
-      const { id } = this.props;
       const newTask = {
-        id: 122,
         title: this.state.title
       }
-      this.props.addSubtask(newTask, id)
+      this.props.addSubtask(newTask)
     }
 
     render() {
