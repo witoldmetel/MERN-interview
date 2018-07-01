@@ -1,4 +1,4 @@
-import { GET_TODOS, ADD_TODO, DELETE_TODO, ADD_SUBTASK, TODOS_LOADING } from '../actions/types';
+import { GET_TODOS, ADD_TODO, DELETE_TODO, ADD_SUBTASK } from '../actions/types';
 import axios from 'axios';
 
 export const getTodos = () => dispatch => {
