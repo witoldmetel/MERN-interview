@@ -1,20 +1,17 @@
-import uuid from 'uuid';
-import { GET_TODOS, ADD_TODO, DELETE_TODO, TOGGLE_TODO, ADD_SUBTASK } from '../actions/types';
+import { GET_TODOS, ADD_TODO, DELETE_TODO, TOGGLE_TODO, ADD_SUBTASK, TODOS_LOADING } from '../actions/types';
 
 const initialState = {
-    todos: [
-            { id: uuid(), title: 'Buy books', completed: false, subtasks: [] },
-            { id: uuid(), title: 'Buy cars', completed: false, subtasks: [] },
-            { id: uuid(), title: 'Buy milk', completed: false, subtasks: [] },
-            { id: uuid(), title: 'Buy apple', completed: false, subtasks: [] }
-        ]
-    }
+    todos: [],
+    loading: false
+    };
 
 export default function(state = initialState, action) {
     switch(action.type) {
         case GET_TODOS:
             return {
-                ...state
+                ...state,
+                todos: action.payload,
+                loading: false
             }
         case ADD_TODO:
             return {
@@ -44,6 +41,11 @@ export default function(state = initialState, action) {
                         subtasks: [action.payload, ...todo.subtasks]
                     } :
                     todo)
+                }
+        case TODOS_LOADING:
+                return {
+                    ...state,
+                    loading: true
                 }
         default:
             return state

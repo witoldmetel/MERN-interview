@@ -29,7 +29,7 @@ class TodoTask extends Component {
     render() {
     const { id, title, completed, subtasks } = this.props;
     let subtasksContent;
-    if (subtasks.length !== 0) {
+    if (subtasks) {
         subtasksContent = (
             <div>
                 {subtasks.map(({ id, title, completed }) => (
