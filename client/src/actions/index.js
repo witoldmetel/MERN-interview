@@ -30,6 +30,20 @@ export const addSubtask = (todo, id) => {
     };
 }
 
+// export const addSubtask = (id, todo) => dispatch => {
+//     axios.get('/todos')
+//         .then(res => res.data.subtasks
+//             .post('/subtasks', todo)
+//             .then(res =>
+//                 dispatch({
+//                     type: ADD_SUBTASK,
+//                     payload: res.data,
+//                     id: id
+//                 })
+//             )
+//         )
+// }
+
 export const deleteTodo = (id) => dispatch => {
     axios.delete(`/todos/${id}`)
         .then(res => 
