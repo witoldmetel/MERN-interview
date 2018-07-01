@@ -20,11 +20,15 @@ class TodoList extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        const newTask = {
-            title: this.state.title
+        
+        if (e.target[0].value !== '') {
+            const newTask = {
+                title: this.state.title
+            }
+            this.props.addTodo(newTask);
+            e.target[0].value = '';
         }
-        this.props.addTodo(newTask)
-        }
+    }
 
     render() {
         let todoListContent;
