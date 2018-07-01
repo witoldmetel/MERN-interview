@@ -1,12 +1,12 @@
 import uuid from 'uuid';
-import { GET_TODOS, ADD_TODO, DELETE_TODO, TOGGLE_TODO } from '../actions/types';
+import { GET_TODOS, ADD_TODO, DELETE_TODO, TOGGLE_TODO, ADD_SUBTASK } from '../actions/types';
 
 const initialState = {
     todos: [
-            { id: uuid(), title: 'Buy books', completed: false },
-            { id: uuid(), title: 'Buy cars', completed: false },
-            { id: uuid(), title: 'Buy milk', completed: false },
-            { id: uuid(), title: 'Buy apple', completed: false }
+            { id: uuid(), title: 'Buy books', completed: false, subtasks: [] },
+            { id: uuid(), title: 'Buy cars', completed: false, subtasks: [] },
+            { id: uuid(), title: 'Buy milk', completed: false, subtasks: [] },
+            { id: uuid(), title: 'Buy apple', completed: false, subtasks: [] }
         ]
     }
 
@@ -33,6 +33,15 @@ export default function(state = initialState, action) {
                     {
                         ...todo,
                         completed: !todo.completed
+                    } :
+                    todo)
+                }
+        case ADD_SUBTASK:
+            return {
+                todos: state.todos.map(todo =>
+                    (todo.id === action.id) ? {
+                        ...todo,
+                        subtasks: [action.payload, ...todo.subtasks]
                     } :
                     todo)
                 }

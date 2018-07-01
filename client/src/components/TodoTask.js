@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { ListGroupItem, Button, Collapse } from 'reactstrap';
+import { ListGroup, ListGroupItem, Button, Collapse } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { deleteTodo, toggleTodo } from '../actions/index';
 import './TodoTask.css'
+
+import InputTodoSubtask from './InputTodoSubtask';
 
 class TodoTask extends Component {
     state = {
@@ -25,7 +27,30 @@ class TodoTask extends Component {
     }
 
     render() {
-    const { id, title, completed } = this.props;
+    const { id, title, completed, subtasks } = this.props;
+    let subtasksContent;
+    if (subtasks.length !== 0) {
+        subtasksContent = (
+            <div>
+                {subtasks.map(({ id, title, completed }) => (
+                    <ListGroupItem key={id} className="subtask__list--item">
+                        <p style={{ textDecoration: completed ? 'line-through' : 'none' }}>{title}</p>
+                        <div className="todoItem__controls">
+                            <label className="checkbox">
+                                <input type="checkbox" onClick={this.onToggleClick.bind(this, id)}/>
+                                <span className="checkmark"></span>
+                            </label>
+                            <Button onClick={this.onDeleteClick.bind(this, id)} color="danger">
+                                <i className="far fa-trash-alt"></i>
+                            </Button>
+                        </div>
+                    </ListGroupItem>
+                ))}
+            </div>
+        )
+    } else {
+        subtasksContent = null
+    }
     return (
         <div>
             <ListGroupItem key={id} className="todoItem">
@@ -33,21 +58,24 @@ class TodoTask extends Component {
                 <div className="todoItem__controls">
                     <label className="checkbox">
                         <input type="checkbox" onClick={this.onToggleClick.bind(this, id)}/>
-                        <span class="checkmark"></span>
+                        <span className="checkmark"></span>
                     </label>
                     <Button onClick={this.onDeleteClick.bind(this, id)} color="danger">
-                        <i class="far fa-trash-alt"></i>
+                        <i className="far fa-trash-alt"></i>
                     </Button>
                     <Button
                         color="primary"
                         onClick={this.onCollapse}
                     >
-                        {this.state.collapse ? <i class="fas fa-caret-up"></i> : <i class="fas fa-caret-down"></i>}
+                        {this.state.collapse ? <i className="fas fa-caret-up"></i> : <i className="fas fa-caret-down"></i>}
                     </Button>
                 </div>
             </ListGroupItem>
             <Collapse isOpen={this.state.collapse}>
-                Test
+                <InputTodoSubtask id={id}/>
+                <ListGroup className="subtask__list">
+                    {subtasksContent}
+                </ListGroup>
             </Collapse>
         </div>
     )

@@ -1,4 +1,4 @@
-import { GET_TODOS, ADD_TODO, DELETE_TODO } from '../actions/types';
+import { GET_TODOS, ADD_TODO, DELETE_TODO, ADD_SUBTASK } from '../actions/types';
 
 export const getTodos = () => {
     return {
@@ -10,6 +10,14 @@ export const addTodo = (todo) => {
     return {
         type: ADD_TODO,
         payload: todo
+    };
+}
+
+export const addSubtask = (todo, id) => {
+    return {
+        type: ADD_SUBTASK,
+        payload: todo,
+        id: id
     };
 }
 
