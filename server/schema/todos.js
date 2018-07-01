@@ -15,7 +15,9 @@ router.get('/', (req, res) => {
 //Add todo
 router.post('/', (req, res) => {
     const newTodo = new todo({
-        title: req.body.title
+        title: req.body.title,
+        completed: false,
+        subtasks: []
     });
 
     newTodo.save()
