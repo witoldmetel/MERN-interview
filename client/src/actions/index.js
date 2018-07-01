@@ -12,11 +12,14 @@ export const getTodos = () => dispatch => {
         )
 }
 
-export const addTodo = (todo) => {
-    return {
-        type: ADD_TODO,
-        payload: todo
-    };
+export const addTodo = (todo) => dispatch => {
+    axios.post('/todos', todo)
+        .then(res => 
+            dispatch({
+                type: ADD_TODO,
+                payload: res.data
+            })
+        )
 }
 
 export const addSubtask = (todo, id) => {
@@ -27,18 +30,24 @@ export const addSubtask = (todo, id) => {
     };
 }
 
-export const deleteTodo = (id) => {
-    return {
-        type: DELETE_TODO,
-        payload: id
-    };
+export const deleteTodo = (id) => dispatch => {
+    axios.delete(`/todos/${id}`)
+        .then(res => 
+            dispatch({
+                type: DELETE_TODO,
+                payload: id
+            })
+        )
 }
 
-export const toggleTodo = (id) => {
-    return {
-        type: 'TOGGLE_TODO',
-        payload: id
-    };
+export const toggleTodo = (id, todo) => dispatch => {
+    axios.put(`/todos/${id}`, todo)
+        .then(res =>
+            dispatch({
+                type: 'TOGGLE_TODO',
+                payload: todo
+            })    
+        )
 }
 
 export const setTodosLoading = () => {

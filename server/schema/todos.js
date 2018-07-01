@@ -24,7 +24,7 @@ router.post('/', (req, res) => {
         .then(todo => res.json(todo))
 });
 
-//POST endpoint /todos/:id
+//DELETE endpoint /todos/:id
 //Delete todo
 router.delete('/:id', (req, res) => {
     todo.findById(req.params.id)
@@ -37,5 +37,15 @@ router.delete('/:id', (req, res) => {
             }))
 });
 
+//PUT endpoint /todos/:id
+//update todo (completed)
+router.put('/:id', (req, res) => {
+    todo.findById(req.params.id)
+        .then(todo => {
+            todo.completed = !todo.completed;
+            todo.save()
+                .then(todo => res.json(todo))
+        }
+)});
 
 module.exports = router;

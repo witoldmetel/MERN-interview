@@ -21,7 +21,6 @@ class TodoList extends Component {
     onSubmit = (e) => {
         e.preventDefault();
         const newTask = {
-            id: 122,
             title: this.state.title
         }
         this.props.addTodo(newTask)
@@ -33,10 +32,10 @@ class TodoList extends Component {
         if(todos) {
             todoListContent = (
                 <ListGroup>
-                    {todos.map(({ id, title, completed, subtasks }) => (
+                    {todos.map(({ _id, title, completed, subtasks }) => (
                         <TodoTask
-                            key={id}
-                            id={id}
+                            key={_id}
+                            id={_id}
                             title={title}
                             completed={completed}
                             subtasks={subtasks}
