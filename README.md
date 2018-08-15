@@ -1,6 +1,6 @@
-# MERN_Interview
-MERN Todo app
+# MERN (Interview Task)
 
+MERN Todo app
 Technologies used: React, Redux, Reactstrap, Node.js, Express, MongoDB
 
 ## Quick Start
@@ -32,5 +32,3 @@ module.exports = {
     mongoDBURI: '<YOUR_MONGODB_URI_KEY'
 };
 ```
-## Live (in Progress):
-https://conservative-inukshuk-21871.herokuapp.com/
