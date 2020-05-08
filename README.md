@@ -32,3 +32,5 @@ module.exports = {
     mongoDBURI: '<YOUR_MONGODB_URI_KEY'
 };
 ```
+
+Helper: https://github.com/justinhaaheim/nested-task-list-mobx-react
