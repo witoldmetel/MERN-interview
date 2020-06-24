@@ -1,21 +1,21 @@
 .container {
-    width: 80%;
-    margin-top: 2rem;
-    padding: 25px;
-    border: 1px solid rgb(121, 116, 116);
-    border-radius: 10px;
-    -webkit-box-shadow: 10px 10px 37px -8px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 10px 10px 37px -8px rgba(0, 0, 0, 0.75);
-    box-shadow: 10px 10px 37px -8px rgba(0, 0, 0, 0.75);
+	width: 80%;
+	margin-top: 2rem;
+	padding: 25px;
+	border: 1px solid rgb(121, 116, 116);
+	border-radius: 10px;
+	-webkit-box-shadow: 10px 10px 37px -8px rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: 10px 10px 37px -8px rgba(0, 0, 0, 0.75);
+	box-shadow: 10px 10px 37px -8px rgba(0, 0, 0, 0.75);
 }
 
 .todoItem {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
 
 .todoItem__controls {
-    display: flex;
-    justify-content: flex-end;
+	display: flex;
+	justify-content: flex-end;
 }

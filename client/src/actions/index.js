@@ -1,34 +1,37 @@
-import { GET_TODOS, ADD_TODO, DELETE_TODO, ADD_SUBTASK } from '../actions/types';
+import {
+	GET_TODOS,
+	ADD_TODO,
+	DELETE_TODO,
+	ADD_SUBTASK,
+} from '../actions/types';
 import axios from 'axios';
 
-export const getTodos = () => dispatch => {
-    dispatch(setTodosLoading());
-    axios.get('/todos')
-        .then(res => 
-            dispatch({
-                type: GET_TODOS,
-                payload: res.data
-            })
-        )
-}
+export const getTodos = () => (dispatch) => {
+	dispatch(setTodosLoading());
+	axios.get('/todos').then((res) =>
+		dispatch({
+			type: GET_TODOS,
+			payload: res.data,
+		})
+	);
+};
 
-export const addTodo = (todo) => dispatch => {
-    axios.post('/todos', todo)
-        .then(res => 
-            dispatch({
-                type: ADD_TODO,
-                payload: res.data
-            })
-        )
-}
+export const addTodo = (todo) => (dispatch) => {
+	axios.post('/todos', todo).then((res) =>
+		dispatch({
+			type: ADD_TODO,
+			payload: res.data,
+		})
+	);
+};
 
 export const addSubtask = (todo, id) => {
-    return {
-        type: ADD_SUBTASK,
-        payload: todo,
-        id: id
-    };
-}
+	return {
+		type: ADD_SUBTASK,
+		payload: todo,
+		id: id,
+	};
+};
 
 // export const addSubtask = (id, todo) => dispatch => {
 //     axios.get('/todos')
@@ -44,28 +47,26 @@ export const addSubtask = (todo, id) => {
 //         )
 // }
 
-export const deleteTodo = (id) => dispatch => {
-    axios.delete(`/todos/${id}`)
-        .then(res => 
-            dispatch({
-                type: DELETE_TODO,
-                payload: id
-            })
-        )
-}
+export const deleteTodo = (id) => (dispatch) => {
+	axios.delete(`/todos/${id}`).then((res) =>
+		dispatch({
+			type: DELETE_TODO,
+			payload: id,
+		})
+	);
+};
 
-export const toggleTodo = (id, todo) => dispatch => {
-    axios.put(`/todos/${id}`, todo)
-        .then(res =>
-            dispatch({
-                type: 'TOGGLE_TODO',
-                payload: todo
-            })    
-        )
-}
+export const toggleTodo = (id, todo) => (dispatch) => {
+	axios.put(`/todos/${id}`, todo).then((res) =>
+		dispatch({
+			type: 'TOGGLE_TODO',
+			payload: todo,
+		})
+	);
+};
 
 export const setTodosLoading = () => {
-    return {
-        type: 'TODOS_LOADING',
-    };
-}
+	return {
+		type: 'TODOS_LOADING',
+	};
+};

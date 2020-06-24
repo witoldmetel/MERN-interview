@@ -7,46 +7,48 @@ const todo = require('../schema/todo');
 //GET endpoint /todos
 //Get all todos
 router.get('/', (req, res) => {
-    todo.find()
-        .then(todos => res.json(todos))
+	todo.find().then((todos) => res.json(todos));
 });
 
 //POST endpoint /todos
 //Add todo
 router.post('/', (req, res) => {
-    const newTodo = new todo({
-        title: req.body.title,
-        completed: false,
-        subtasks: []
-    });
+	const newTodo = new todo({
+		title: req.body.title,
+		completed: false,
+		subtasks: [],
+	});
 
-    newTodo.save()
-        .then(todo => res.json(todo))
+	newTodo.save().then((todo) => res.json(todo));
 });
 
 //DELETE endpoint /todos/:id
 //Delete todo
 router.delete('/:id', (req, res) => {
-    todo.findById(req.params.id)
-        .then(todo => todo.remove()
-            .then(() => res.json({
-                success: true
-            })))
-            .catch(err => res.status(404).json({
-                success: false
-            }))
+	todo
+		.findById(req.params.id)
+		.then((todo) =>
+			todo.remove().then(() =>
+				res.json({
+					success: true,
+				})
+			)
+		)
+		.catch((err) =>
+			res.status(404).json({
+				success: false,
+			})
+		);
 });
 
 //PUT endpoint /todos/:id
 //update todo (completed)
 router.put('/:id', (req, res) => {
-    todo.findById(req.params.id)
-        .then(todo => {
-            todo.completed = !todo.completed;
-            todo.save()
-                .then(todo => res.json(todo))
-        }
-)});
+	todo.findById(req.params.id).then((todo) => {
+		todo.completed = !todo.completed;
+		todo.save().then((todo) => res.json(todo));
+	});
+});
 
 //Add subtask
 // router.post('/subtasks', (req, res) => {

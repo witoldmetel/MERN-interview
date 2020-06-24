@@ -5,7 +5,7 @@ Technologies used: React, Redux, Reactstrap, Node.js, Express, MongoDB
 
 ## Quick Start
 
-``` bash
+```bash
 # Install dependencies for server side
 npm install
 
@@ -27,10 +27,13 @@ npm run heroku-postbuild
 
 In config folder you need to add your MondoDB URI key:
 
-``` bash
+```bash
 module.exports = {
     mongoDBURI: '<YOUR_MONGODB_URI_KEY'
 };
 ```
 
-Helper: https://github.com/justinhaaheim/nested-task-list-mobx-react
+Helpers:
+
+- https://github.com/justinhaaheim/nested-task-list-mobx-react
+- https://www.youtube.com/watch?v=SBvmnHTQIPY

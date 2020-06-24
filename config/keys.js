@@ -1,3 +1,4 @@
 module.exports = {
-    mongoDBURI: 'YOUR_MONGODB_URI_KEY'
+	mongoDBURI:
+		'mongodb+srv://netninja:netninja@cluster0-pt2ri.mongodb.net/mern?retryWrites=true&w=majority',
 };

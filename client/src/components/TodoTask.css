@@ -1,77 +1,77 @@
 Button {
-    width: 38px;
-    height: 38px;
-    margin-left: 10px;
+	width: 38px;
+	height: 38px;
+	margin-left: 10px;
 }
 
 /* Checkbox stylling */
 .checkbox {
-    display: block;
-    position: relative;
-    padding-left: 35px;
-    width: 38px;
-    height: 38px;
-    cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+	display: block;
+	position: relative;
+	padding-left: 35px;
+	width: 38px;
+	height: 38px;
+	cursor: pointer;
+	font-size: 22px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 
 .checkbox input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
 }
 
 .checkmark {
-    position: absolute;
-    top: 3px;
-    left: 8px;
-    width: 30px;
-    height: 30px;
-    background-color: #eee;
+	position: absolute;
+	top: 3px;
+	left: 8px;
+	width: 30px;
+	height: 30px;
+	background-color: #eee;
 }
 
-.checkbox:hover input~.checkmark {
-    background-color: #ccc;
+.checkbox:hover input ~ .checkmark {
+	background-color: #ccc;
 }
 
-.checkbox input:checked~.checkmark {
-    background-color: #2196F3;
+.checkbox input:checked ~ .checkmark {
+	background-color: #2196f3;
 }
 
 .checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
+	content: '';
+	position: absolute;
+	display: none;
 }
 
-.checkbox input:checked~.checkmark:after {
-    display: block;
+.checkbox input:checked ~ .checkmark:after {
+	display: block;
 }
 
 .checkbox .checkmark:after {
-    left: 10px;
-    top: 3px;
-    width: 10px;
-    height: 19px;
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
+	left: 10px;
+	top: 3px;
+	width: 10px;
+	height: 19px;
+	border: solid white;
+	border-width: 0 3px 3px 0;
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
 }
 
 /* Collapse Content */
 .subtask__list {
-    display: flex;
-    justify-content: flex-end;
-    flex-direction: column;
-    margin-bottom: 15px;
+	display: flex;
+	justify-content: flex-end;
+	flex-direction: column;
+	margin-bottom: 15px;
 }
 
 .subtask__list--item {
-    margin-left: 2rem;
+	margin-left: 2rem;
 }

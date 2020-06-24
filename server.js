@@ -14,20 +14,21 @@ app.use(bodyParser.json());
 const db = require('./config/keys').mongoDBURI;
 
 // DB Connect
-mongoose.connect(db)
-    .then(() => console.log("MongoDB Connect"))
-    .catch(err => console.log(err));
+mongoose
+	.connect(db)
+	.then(() => console.log('MongoDB Connect'))
+	.catch((err) => console.log(err));
 
 // Use API Route (endpoint, refs)
 app.use('/todos', todos);
 
 //Serve static assets for production
 if (process.env.NODE_ENV === 'production') {
-    //Set static folder
-    app.use(express.static('client/build'));
-    app.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-    })
+	//Set static folder
+	app.use(express.static('client/build'));
+	app.get('*', (req, res) => {
+		res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+	});
 }
 
 // Port Server define

@@ -5,14 +5,14 @@ import AppNavbar from './components/AppNavbar';
 import TodoList from './components/TodoList';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <AppNavbar />
-        <TodoList />
-      </div>
-    );
-  }
+	render() {
+		return (
+			<div className="App">
+				<AppNavbar />
+				<TodoList />
+			</div>
+		);
+	}
 }
 
 export default App;
